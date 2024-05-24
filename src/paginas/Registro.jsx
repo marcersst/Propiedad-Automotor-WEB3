@@ -74,13 +74,12 @@ export const Registro = () => {
       const cidMetadata = await subirJSON(metadataJSON);
       console.log(`https://ipfs.io/ipfs/${cidMetadata}`, cidMetadata);
 
-
       const contract = contrato.contract;
-      const dni = await contract.dnideWallet(account)
-      console.log(dni)
+      const dni = await contract.dnideWallet(account);
+      console.log(dni);
 
-      const id = await contract.safeMint(dni, `https://ipfs.io/ipfs/${cidMetadata}`)
-      console.log(id)
+      const id = await contract.safeMint(dni, `https://ipfs.io/ipfs/${cidMetadata}`);
+      console.log(id);
 
       Swal.fire("Nft Creado Correctamente !", "", "success");
 
@@ -113,12 +112,9 @@ export const Registro = () => {
       [name]: value
     }));
   };
-  
-
-
 
   return (
-    <div className="bg-zinc-300 flex items-center justify-center px-10 py-10 animate__animated  animate__fadeInDown">
+    <div className="bg-zinc-300 flex items-center justify-center px-10 py-10 animate__animated animate__fadeInDown">
       <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden">
         <div className="flex flex-col md:flex-row w-full">
           <div className="w-full md:w-1/2 bg-indigo-500 py-10 px-10 md:py-20 md:px-20 flex flex-col items-center">
@@ -151,12 +147,11 @@ export const Registro = () => {
                   <label className="text-xs font-semibold px-1">Modelo*</label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-titular-outline text-gray-400 text-lg"></i>
                     </div>
                     <input
                       type="text"
                       name="modelo"
-                      value={metadata.titular}
+                      value={metadata.modelo}
                       required
                       onChange={handleChange}
                       className="w-full -ml-10 pl-10 pr-3 py-3 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
@@ -169,7 +164,6 @@ export const Registro = () => {
                   <label className="text-xs font-semibold px-2">Marca*</label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
                     <input
                       type="text"
@@ -185,7 +179,6 @@ export const Registro = () => {
                   <label className="text-xs font-semibold px-2">Año*</label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
                     <input
                       type="number"
@@ -201,7 +194,6 @@ export const Registro = () => {
                   <label className="text-xs font-semibold px-1">Patente*</label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                     </div>
                     <input
                       type="text"
@@ -219,10 +211,10 @@ export const Registro = () => {
                   <label className="text-xs font-semibold px-1">Descripcion</label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                      <i className="mdi mdi-lock-outline text-gray-400 text-lg"></i>
                     </div>
                     <textarea id="descripcion" rows="4" className="w-full -ml-10 pl-10 pr-3 py-3 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="Historia de Vehiculo"
+                      name="descripcion"
                       value={metadata.descripcion}
                       onChange={handleChange}
                     ></textarea>
@@ -243,3 +235,4 @@ export const Registro = () => {
     </div>
   );
 };
+

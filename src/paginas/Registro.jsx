@@ -118,10 +118,10 @@ export const Registro = () => {
       <div className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden">
         <div className="flex flex-col md:flex-row w-full">
           <div className="w-full md:w-1/2 bg-indigo-500 py-10 px-10 md:py-20 md:px-20 flex flex-col items-center">
-            <div className=''>
+            <div >
               {imagen ? (
-                <div className="rounded-full bg-gray-300 p-4 overflow-hidden">
-                  <img src={URL.createObjectURL(imagen)} alt="carga" className="mx-auto max-w-full h-auto object-contain rounded-full" />
+                <div className="rounded-3xl bg-gray-300 p-2 overflow-hidden">
+                  <img src={URL.createObjectURL(imagen)} alt="carga"  className='rounded-3xl'/>
                 </div>
               ) : (
                 <img src={subir} alt="carga" className="mx-auto max-w-full h-auto object-contain" />

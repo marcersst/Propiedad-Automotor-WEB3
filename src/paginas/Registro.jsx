@@ -208,12 +208,11 @@ export const Registro = () => {
               </div>
               <div className="flex -mx-3">
                 <div className="w-full px-3 mb-12">
-                  <label className="text-xs font-semibold px-1">Descripcion</label>
+                  <label className="text-xs font-semibold px-1">Características Adicionales</label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                     </div>
                     <textarea id="descripcion" rows="4" className="w-full -ml-10 pl-10 pr-3 py-3 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                      placeholder="Historia de Vehiculo"
                       name="descripcion"
                       value={metadata.descripcion}
                       onChange={handleChange}

@@ -12,15 +12,13 @@ export const MisTransferencias = () => {
     id: ''
   });
 
-  const key= process.env.VITE_ALCHEMY
+  const key = process.env.VITE_ALCHEMY;
 
   const [autos, setAutos] = useState([]);
 
-  const obtenernfts = async () => {    
+  const obtenernfts = async () => {
     const options = { method: 'GET', headers: { accept: 'application/json' } };
 
-
-    https://eth-sepolia.g.alchemy.com/nft/v3/gHUjX3o_G4MkNq7DherdCF6Zn_OuIYqR%7D/getNFTsForOwner?owner=0xad7aabe5f796b648965632ce9f65a27f4bec2d21&contractAddresses[]=0xb0263A941A29BE39E034D9a1898a8c7C3c1ecf48&withMetadata=true&pageSize=100
     fetch(`https://eth-sepolia.g.alchemy.com/nft/v3/${key}/getNFTsForOwner?owner=${account}&contractAddresses[]=0xb0263A941A29BE39E034D9a1898a8c7C3c1ecf48&withMetadata=true&pageSize=100`, options)
       .then(response => response.json())
       .then(response => {
@@ -29,6 +27,12 @@ export const MisTransferencias = () => {
           id: auto.tokenId
         }));
         setAutos(nuevosAutos);
+        if (nuevosAutos.length > 0) {
+          setFormulario(prevFormulario => ({
+            ...prevFormulario,
+            id: nuevosAutos[0].id
+          }));
+        }
       })
       .catch(err => {
         console.error(err);
@@ -54,6 +58,7 @@ export const MisTransferencias = () => {
 
     try {
       const contract = contrato.contract;
+      console.log(formulario)
       await contract._transferFrom(formulario.wallet, formulario.id, formulario.dni);
       Swal.fire("Transferencia realizada correctamente!", "", "success");
     } catch (error) {
@@ -68,8 +73,6 @@ export const MisTransferencias = () => {
     }
   }, [account]);
 
-
-  //funcion para manejar dinamicamente los cambios 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormulario(prevFormulario => ({
@@ -158,3 +161,4 @@ export const MisTransferencias = () => {
     </div>
   );
 };
+
